@@ -6,14 +6,16 @@ substitutions:
 steps:
 
     - name: 'gcr.io/cloud-builders/go'
-      args: ['test', './desafio-go/src']
+      env: ['PROJECT_ROOT=desafio-go']
+      args: ['test', './...']
 
     # Build image based on the Dockerfile
     - name: 'gcr.io/cloud-builders/docker'
-      args: ['build', '-t', 'gcr.io/$PROJECT_ID/desafio-go-k8s', '.']
+      args: ['build', '-t', 'gcr.io/$PROJECT_ID/desafio-go-k8s', './desafio-go']
     
     # Push the container image to Container Registry
     - name: 'gcr.io/cloud-builders/docker'
+      env: ['PROJECT_ROOT=desafio-go']
       args: ['push', 'gcr.io/$PROJECT_ID/desafio-go-k8s']
 
 images: 
