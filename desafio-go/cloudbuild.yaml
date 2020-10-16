@@ -6,7 +6,7 @@ substitutions:
 steps:
 
     - name: 'gcr.io/cloud-builders/go'
-      args: ['test', './src']
+      args: ['test', './desafio-go/src']
 
     # Build image based on the Dockerfile
     - name: 'gcr.io/cloud-builders/docker'
