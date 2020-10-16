@@ -33,3 +33,5 @@ kubectl get pods
 kubectl exec -it mysql-server-7885f79678-xvlz7 bash
 mysql -uroot -p
 
+# Google Cloud Build local test
+gcloud builds submit --config desafio-go/cloudbuild.yaml
