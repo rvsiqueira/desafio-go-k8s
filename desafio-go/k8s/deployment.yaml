@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: desafio-go-k8s
+spec: #spec do deployment
+    replicas: 1
+    selector: # selector utilizado para criar o service
+        matchLabels:
+          app: desafio-go-k8s
+    template: #referente ao POD
+        metadata: 
+            labels: 
+                app: desafio-go-k8s
+        spec:  #spec do POD
+            containers:
+              - name: desafio-go-k8s
+                image: rvsiqueira/desafio-go-k8s
+                ports:
+                  - containerPort: 8080
